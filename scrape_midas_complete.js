@@ -10,6 +10,8 @@ const path = require('path');
 const DEBUG_VISUAL = process.env.DEBUG_VISUAL === 'true';
 const REMOTE_DEBUG_PORT = Number(process.env.REMOTE_DEBUG_PORT || 9222);
 const DEBUG_SCREENSHOT_DIR = path.join(__dirname, 'debug-screenshots');
+const FORCE_BROWSER = (process.env.FORCE_BROWSER || '').toLowerCase();
+const ALLOW_CHROMIUM_FALLBACK = process.env.ALLOW_CHROMIUM_FALLBACK === 'true';
 
 const ensureDebugDir = () => {
   if (!DEBUG_VISUAL) return;
@@ -130,8 +132,7 @@ const resolveHeadlessMode = () => {
   return true;
 };
 
-const CHROMIUM_HEADLESS_ARGS = [
-  '--disable-gpu',
+const CHROMIUM_BASE_ARGS = [
   '--no-sandbox',
   '--disable-setuid-sandbox',
   '--disable-dev-shm-usage',
@@ -140,23 +141,44 @@ const CHROMIUM_HEADLESS_ARGS = [
   '--disable-blink-features=AutomationControlled',
 ];
 
+const CHROMIUM_HEADLESS_ARGS = [...CHROMIUM_BASE_ARGS, '--disable-gpu'];
+const CHROMIUM_NON_HEADLESS_ARGS = [
+  ...CHROMIUM_BASE_ARGS,
+  '--disable-gpu',
+  '--start-maximized',
+];
+
 const buildChromiumLaunchOptions = (headless) => ({
   headless,
   args: DEBUG_VISUAL
-    ? [
-        `--remote-debugging-port=${REMOTE_DEBUG_PORT}`,
-        '--start-maximized',
-        '--disable-gpu',
-      ]
+    ? [`--remote-debugging-port=${REMOTE_DEBUG_PORT}`, ...CHROMIUM_NON_HEADLESS_ARGS]
     : headless
     ? [...CHROMIUM_HEADLESS_ARGS]
-    : ['--disable-blink-features=AutomationControlled'],
+    : [...CHROMIUM_BASE_ARGS],
 });
 
 const buildWebkitLaunchOptions = (headless) => ({
   headless,
   args: headless ? ['--disable-blink-features=AutomationControlled'] : [],
 });
+
+const resolveBrowserPreference = () => {
+  if (FORCE_BROWSER === 'chromium' || FORCE_BROWSER === 'chrome') {
+    return 'chromium';
+  }
+  if (FORCE_BROWSER === 'webkit' || FORCE_BROWSER === 'safari') {
+    return 'webkit';
+  }
+  return 'webkit';
+};
+
+const resolveBrowserLaunchOrder = () => {
+  const preferred = resolveBrowserPreference();
+  if (ALLOW_CHROMIUM_FALLBACK && preferred !== 'chromium') {
+    return [preferred, 'chromium'];
+  }
+  return [preferred];
+};
 
 const buildSelectionFilters = (type, targetLabel) => {
   const filters = [];
@@ -325,34 +347,56 @@ async function runScrapeFlow(plate, serviceConfig = null) {
     }
 
     const headless = resolveHeadlessMode();
-    if (DEBUG_VISUAL) {
-      const chromiumOptions = buildChromiumLaunchOptions(false);
-      browser = await chromium.launch(chromiumOptions);
-      logStep('Chromium lancé en mode visuel (remote debugging actif)');
-    } else {
+    const launchOrder = resolveBrowserLaunchOrder();
+    let lastLaunchError = null;
+
+    for (const engine of launchOrder) {
       try {
-        const webkitOptions = buildWebkitLaunchOptions(headless);
-        browser = await webkit.launch(webkitOptions);
+        if (engine === 'webkit') {
+          const webkitOptions = buildWebkitLaunchOptions(headless);
+          logStep(
+            `Lancement WebKit (${webkitOptions.headless ? 'headless' : 'headed'})`
+          );
+          browser = await webkit.launch(webkitOptions);
+          break;
+        }
+
+        const chromiumOptions = buildChromiumLaunchOptions(headless && !DEBUG_VISUAL);
         logStep(
-          `WebKit lancé (${webkitOptions.headless ? 'headless' : 'headed'})`
+          `Lancement Chromium (${chromiumOptions.headless ? 'headless' : 'headed'})`
         );
-      } catch (webkitError) {
-        console.log(
-          '   ⚠️  WebKit indisponible, fallback Chromium:',
-          webkitError.message
-        );
-        const chromiumOptions = buildChromiumLaunchOptions(headless);
         browser = await chromium.launch(chromiumOptions);
-        logStep(
-          `Chromium lancé (${chromiumOptions.headless ? 'headless' : 'headed'})`
+        break;
+      } catch (launchError) {
+        lastLaunchError = launchError;
+        console.log(
+          `   ⚠️  Impossible de lancer ${engine}: ${launchError.message}`
         );
       }
     }
-    
+
+    if (!browser) {
+      throw lastLaunchError || new Error('Impossible de lancer un navigateur Playwright');
+    }
+
     context = await browser.newContext({
-      userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15',
+      userAgent:
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15',
     });
     let page = await context.newPage();
+
+    const attachPageDebugListeners = (targetPage) => {
+      if (!targetPage || targetPage.__ocazcarDebugAttached) return;
+      targetPage.__ocazcarDebugAttached = true;
+      targetPage.on('console', (msg) => {
+        const type = (msg.type() || 'log').toUpperCase();
+        console.log(`[BROWSER:${type}] ${msg.text()}`);
+      });
+      targetPage.on('pageerror', (error) => {
+        console.log(`[BROWSER:ERROR] ${error.message}`);
+      });
+    };
+    attachPageDebugListeners(page);
 
     const ensureActivePage = async () => {
       if (page && !page.isClosed()) {
@@ -364,6 +408,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
         throw new Error('Aucune page active disponible après la validation');
       }
       page = fallback;
+      attachPageDebugListeners(page);
       await page.waitForLoadState('domcontentloaded').catch(() => {});
       return page;
     };
@@ -381,6 +426,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
       if (newPage) {
         console.log('   🔄 Nouvelle page détectée après validation');
         page = newPage;
+        attachPageDebugListeners(page);
         await page
           .waitForLoadState('networkidle', { timeout: 5000 })
           .catch(async () => {
@@ -446,9 +492,9 @@ async function runScrapeFlow(plate, serviceConfig = null) {
       .catch(async () => {
         await page.waitForTimeout(220);
       });
-    
+
     let plateInput = null;
-    
+
     // Méthode 1: Chercher par placeholder
     try {
       const inputByPlaceholder = await page.locator('input[placeholder*="AB123CD"]').first();
@@ -459,7 +505,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
     } catch (e) {
       // Continuer
     }
-    
+
     // Méthode 2: Chercher dans la section "Mon numéro de plaque"
     if (!plateInput) {
       try {
@@ -480,35 +526,35 @@ async function runScrapeFlow(plate, serviceConfig = null) {
         // Continuer
       }
     }
-    
+
     // Méthode 3: Chercher tous les inputs et trouver celui avec "AB123CD"
     if (!plateInput) {
       try {
         const allInputs = await page.locator('input[type="text"], input[type="search"], input').all();
         logStep(`${allInputs.length} champs trouvés → filtrage sur AB123CD`);
-        
-        for (const input of allInputs) {
-          try {
-            const isVisible = await input.isVisible();
-            if (!isVisible) continue;
-            
-            const value = await input.inputValue() || '';
+
+      for (const input of allInputs) {
+        try {
+          const isVisible = await input.isVisible();
+          if (!isVisible) continue;
+
+          const value = await input.inputValue() || '';
             const normalizedValue = value.replace(/[\s-]/g, '').toUpperCase();
-            
+
             if (normalizedValue === 'AB123CD' || value.includes('AB123CD') || value.includes('AB-123-CD')) {
-              plateInput = input;
+            plateInput = input;
               logStep(`Champ trouvé via valeur "${value}"`);
-              break;
-            }
-          } catch (e) {
-            // Continuer
+            break;
           }
+        } catch (e) {
+          // Continuer
+        }
         }
       } catch (e) {
         console.log(`   ❌ Erreur: ${e.message}`);
       }
     }
-    
+
     if (!plateInput) {
       throw new Error('Champ avec "AB123CD" non trouvé');
     }
@@ -523,9 +569,9 @@ async function runScrapeFlow(plate, serviceConfig = null) {
     
     // Étape 5: Vider le champ avec Ctrl+A puis Delete (méthode plus humaine)
     logStep('Vidage du champ immatriculation');
-    await page.keyboard.press('Control+a');
+      await page.keyboard.press('Control+a');
     await page.waitForTimeout(140);
-    await page.keyboard.press('Delete');
+      await page.keyboard.press('Delete');
     await page.waitForTimeout(180);
     
     const valueAfterClear = await plateInput.inputValue() || '';
@@ -614,8 +660,8 @@ async function runScrapeFlow(plate, serviceConfig = null) {
         continueClicked = true;
       } else {
         console.log('   ⚠️  Bouton "Continuer" non visible');
-      }
-    } catch (e) {
+        }
+      } catch (e) {
       console.log(`   ⚠️  Erreur lors de la recherche du bouton: ${e.message}`);
     }
     
@@ -640,11 +686,11 @@ async function runScrapeFlow(plate, serviceConfig = null) {
               await handlePostValidationNavigation(newPagePromise);
               continueClicked = true;
               break;
-            }
-          } catch (e) {
-            // Continuer
           }
+        } catch (e) {
+          // Continuer
         }
+      }
       } catch (e) {
         console.log(`   ❌ Erreur: ${e.message}`);
       }
@@ -664,8 +710,8 @@ async function runScrapeFlow(plate, serviceConfig = null) {
           console.log('   ✅ Navigation confirmée via la touche Entrée');
         } else {
           console.log('   ⚠️  Aucune confirmation visuelle après la touche Entrée');
-        }
-      } catch (e) {
+      }
+    } catch (e) {
         console.log(`   ⚠️  Impossible de valider via Entrée: ${e.message}`);
       }
     }
@@ -787,8 +833,8 @@ async function runScrapeFlow(plate, serviceConfig = null) {
 
           if (matchesAnyPattern(normalizedText, matchers)) {
             containerElement = candidate;
-            break;
-          }
+                break;
+              }
         }
       }
 
@@ -825,8 +871,8 @@ async function runScrapeFlow(plate, serviceConfig = null) {
 
       try {
         await finalLocator.click({ timeout: 5000 });
-      } catch (clickError) {
-        try {
+        } catch (clickError) {
+          try {
           const handle = await finalLocator.elementHandle();
           if (!handle) throw clickError;
           await finalLocator.evaluate((el) => el.click());
@@ -841,7 +887,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
       await page.waitForTimeout(520);
       await closeDetectionPopups(page);
       await ensureActivePage();
-    } else {
+      } else {
       console.log('⏭️  Pas de sélection nécessaire, passage direct au calcul...');
       await page
         .waitForLoadState('networkidle', { timeout: 3000 })
@@ -907,7 +953,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
                   break;
                 } catch (clickError) {
                   try {
-                  await page.evaluate((el) => el.click(), await btn.elementHandle());
+                    await page.evaluate((el) => el.click(), await btn.elementHandle());
                   logStep(`Bouton calcul cliqué via JS: "${text.trim()}"`);
                     await page
                       .waitForLoadState('networkidle', { timeout: 5000 })
@@ -969,8 +1015,8 @@ async function runScrapeFlow(plate, serviceConfig = null) {
             if (priceMatch) {
               const extractedPrice = parseFloat(priceMatch[1].replace(',', '.'));
               if (extractedPrice >= 10 && extractedPrice <= 10000) {
-                price = extractedPrice;
-                break;
+              price = extractedPrice;
+              break;
               }
             }
           } catch (e) {
@@ -987,26 +1033,26 @@ async function runScrapeFlow(plate, serviceConfig = null) {
       const activePage = await ensureActivePage();
       const pageText = await activePage.content();
       const allPriceMatches = pageText.matchAll(/(\d+[.,]\d+)\s*€/g);
-      const prices = [];
+        const prices = [];
       for (const match of allPriceMatches) {
         const extractedPrice = parseFloat(match[1].replace(',', '.'));
         if (extractedPrice >= 10 && extractedPrice <= 10000) {
           prices.push(extractedPrice);
+          }
+        }
+        if (prices.length > 0) {
+          price = Math.max(...prices);
         }
       }
-      if (prices.length > 0) {
-        price = Math.max(...prices);
-      }
-    }
 
     if (!price) {
       throw new Error('Prix non trouvé sur la page');
     }
 
-    console.log(`   ✅ Prix trouvé: ${price}€`);
+      console.log(`   ✅ Prix trouvé: ${price}€`);
 
     return { 
-      success: true, 
+      success: true,
       price, 
       url: page.url(),
       plate,
@@ -1016,26 +1062,32 @@ async function runScrapeFlow(plate, serviceConfig = null) {
   } catch (error) {
     console.error(`   ❌ Erreur: ${error.message}`);
     return { 
-      success: false, 
+      success: false,
       error: error.message,
       plate,
       serviceId: serviceConfig?.id || serviceConfig?.midasService
     };
   } finally {
     if (browser) {
-      try {
-        const pages = context?.pages?.() || [];
-        if (pages.length) {
-          await Promise.all(
-            pages.map((p) => p.waitForTimeout(4000).catch(() => {}))
-          );
-        } else if (page) {
-          await page.waitForTimeout(4000).catch(() => {});
+      if (DEBUG_VISUAL) {
+        logStep(
+          "DEBUG_VISUAL actif : le navigateur reste ouvert pour inspection. Arrête le script (Ctrl+C) quand tu as terminé."
+        );
+      } else {
+        try {
+          const pages = context?.pages?.() || [];
+          if (pages.length) {
+            await Promise.all(
+              pages.map((p) => p.waitForTimeout(4000).catch(() => {}))
+            );
+          } else if (page) {
+            await page.waitForTimeout(4000).catch(() => {});
+          }
+        } catch (_) {
+          // Ignorer les erreurs lors de l'attente avant la fermeture
         }
-      } catch (_) {
-        // Ignorer les erreurs lors de l'attente avant la fermeture
+        await browser.close().catch(() => {});
       }
-      await browser.close();
     }
   }
 }
@@ -1063,11 +1115,11 @@ if (require.main === module) {
   scrapeMidasComplete(plate, url, selection)
     .then((result) => {
       console.log('Résultat:', JSON.stringify(result, null, 2));
-      process.exit(result.success ? 0 : 1);
+    process.exit(result.success ? 0 : 1);
     })
     .catch((error) => {
       console.error('Erreur:', error);
       process.exit(1);
-    });
+  });
 }
 
