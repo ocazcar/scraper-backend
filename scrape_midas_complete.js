@@ -3,7 +3,7 @@
  * → Adapté pour fermer automatiquement les popups anti-bot.
  */
 
-const { chromium, webkit } = require('playwright');
+const { chromium } = require('playwright');
 const servicesFile = require('./services_config.json');
 const servicesList = Array.isArray(servicesFile.services)
   ? servicesFile.services
@@ -93,6 +93,36 @@ const buildSelectionMatchers = (type, targetLabel) => {
 
 const matchesAnyPattern = (normalizedValue, matchers = []) =>
   matchers.some((tokens) => tokens.every((token) => normalizedValue.includes(token)));
+
+const resolveHeadlessMode = () => {
+  if (process.env.KEEP_BROWSER_OPEN === 'true') {
+    return false;
+  }
+  if (process.env.HEADLESS === 'false') {
+    return false;
+  }
+  return true;
+};
+
+const CHROMIUM_HEADLESS_ARGS = [
+  '--disable-gpu',
+  '--no-sandbox',
+  '--disable-setuid-sandbox',
+  '--disable-dev-shm-usage',
+  '--disable-web-security',
+  '--disable-features=IsolateOrigins,site-per-process',
+  '--disable-blink-features=AutomationControlled',
+];
+
+const buildChromiumLaunchOptions = () => {
+  const headless = resolveHeadlessMode();
+  return {
+    headless,
+    args: headless
+      ? [...CHROMIUM_HEADLESS_ARGS]
+      : ['--disable-blink-features=AutomationControlled'],
+  };
+};
 
 const buildSelectionFilters = (type, targetLabel) => {
   const filters = [];
@@ -260,14 +290,11 @@ async function runScrapeFlow(plate, serviceConfig = null) {
       return { success: false, error: 'Configuration du service manquante' };
     }
 
-    // Lancer le navigateur (comme dans la version qui fonctionnait)
-    try {
-      browser = await webkit.launch({ headless: false });
-      console.log('   ✅ Safari WebKit lancé');
-    } catch (webkitError) {
-      console.log('   ⚠️  WebKit non disponible, utilisation de Chromium');
-      browser = await chromium.launch({ headless: false });
-    }
+    const launchOptions = buildChromiumLaunchOptions();
+    browser = await chromium.launch(launchOptions);
+    console.log(
+      `   ✅ Chromium lancé (${launchOptions.headless ? 'headless' : 'headed'})`
+    );
     
     context = await browser.newContext({
       userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15',
