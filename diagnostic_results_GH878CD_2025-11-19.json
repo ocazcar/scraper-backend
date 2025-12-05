@@ -1,0 +1,82 @@
+{
+  "plate": "GH878CD",
+  "timestamp": "2025-11-19T15:41:53.373Z",
+  "total": 12,
+  "success": 0,
+  "failed": 12,
+  "proxyUsed": "Aucun (connexion directe)",
+  "results": [
+    {
+      "serviceId": "plaquettes-avant",
+      "success": false,
+      "error": "Option \"Plaquette avant\" non trouvée",
+      "step": "selection"
+    },
+    {
+      "serviceId": "plaquettes-arriere",
+      "success": false,
+      "error": "Option \"Plaquette arrière\" non trouvée",
+      "step": "selection"
+    },
+    {
+      "serviceId": "disques-avant",
+      "success": false,
+      "error": "Option \"Disque avant\" non trouvée",
+      "step": "selection"
+    },
+    {
+      "serviceId": "disques-arriere",
+      "success": false,
+      "error": "Option \"Disque arrière\" non trouvée",
+      "step": "selection"
+    },
+    {
+      "serviceId": "amortisseurs-avant",
+      "success": false,
+      "error": "Option \"Amortisseurs avant\" non trouvée",
+      "step": "selection"
+    },
+    {
+      "serviceId": "amortisseurs-arriere",
+      "success": false,
+      "error": "Option \"Amortisseurs arrière\" non trouvée",
+      "step": "selection"
+    },
+    {
+      "serviceId": "embrayage",
+      "success": false,
+      "error": "Bouton \"Je calcule mon devis\" non trouvé",
+      "step": "calcul_devis"
+    },
+    {
+      "serviceId": "batterie",
+      "success": false,
+      "error": "Option \"Je n'ai pas le start & stop\" non trouvée",
+      "step": "selection"
+    },
+    {
+      "serviceId": "balais-essuie-glace-conducteur",
+      "success": false,
+      "error": "Bouton \"Je calcule mon devis\" non trouvé",
+      "step": "calcul_devis"
+    },
+    {
+      "serviceId": "balais-essuie-glace-passager",
+      "success": false,
+      "error": "Bouton \"Je calcule mon devis\" non trouvé",
+      "step": "calcul_devis"
+    },
+    {
+      "serviceId": "courroie-distribution",
+      "success": false,
+      "error": "Bouton \"Je calcule mon devis\" non trouvé",
+      "step": "calcul_devis"
+    },
+    {
+      "serviceId": "climatisation",
+      "success": false,
+      "error": "Bouton \"Je calcule mon devis\" non trouvé",
+      "step": "calcul_devis"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+[
+  {
+    "success": false,
+    "plate": "EN062DX",
+    "url": "https://www.midas.fr/devis/prestations/courroie-distribution",
+    "selection": null,
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-20T02:32:41.759Z",
+    "screenshot": "error_EN062DX_no-selection.png"
+  },
+  {
+    "success": false,
+    "plate": "EN062DX",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "selection": "amortisseurs-avant",
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-20T10:31:29.197Z",
+    "screenshot": "error_EN062DX_amortisseurs-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "EN062DX",
+    "url": "https://www.midas.fr/devis/prestations/embrayage",
+    "selection": null,
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-20T10:35:10.963Z",
+    "screenshot": "error_EN062DX_no-selection.png"
+  },
+  {
+    "success": false,
+    "plate": "EN062DX",
+    "url": "https://www.midas.fr/devis/prestations/embrayage",
+    "selection": null,
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-20T10:37:43.575Z",
+    "screenshot": "error_EN062DX_no-selection.png"
+  },
+  {
+    "success": false,
+    "plate": "EN062DX",
+    "url": "https://www.midas.fr/devis/prestations/embrayage",
+    "selection": null,
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-20T11:28:52.010Z",
+    "screenshot": "error_EN062DX_no-selection.png"
+  },
+  {
+    "success": false,
+    "plate": "EN062DX",
+    "url": "https://www.midas.fr/devis/prestations/embrayage",
+    "selection": null,
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-20T11:56:55.574Z",
+    "screenshot": "error_EN062DX_no-selection.png"
+  },
+  {
+    "success": false,
+    "plate": "EN062DX",
+    "url": "https://www.midas.fr/devis/prestations/embrayage",
+    "selection": null,
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-20T12:10:05.600Z",
+    "screenshot": "error_EN062DX_no-selection.png"
+  },
+  {
+    "success": false,
+    "plate": "EN062DX",
+    "url": "https://www.midas.fr/devis/prestations/embrayage",
+    "selection": null,
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-20T12:13:26.757Z",
+    "screenshot": "error_EN062DX_no-selection.png"
+  },
+  {
+    "success": false,
+    "plate": "EN062DX",
+    "url": "https://www.midas.fr/devis/prestations/embrayage",
+    "selection": null,
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-20T12:21:29.886Z",
+    "screenshot": "error_EN062DX_no-selection.png"
+  }
+]

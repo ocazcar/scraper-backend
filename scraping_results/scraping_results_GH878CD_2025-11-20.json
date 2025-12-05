@@ -1,0 +1,123 @@
+[
+  {
+    "success": true,
+    "plate": "GH878CD",
+    "serviceId": "amortisseurs-avant",
+    "serviceName": "Amortisseurs avant",
+    "selection": "amortisseurs-avant",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "price": 50,
+    "timestamp": "2025-11-20T01:52:57.773Z",
+    "screenshot": "result_GH878CD_amortisseurs-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "GH878CD",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "selection": "plaquette-avant",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 50,
+    "timestamp": "2025-11-20T01:55:08.344Z",
+    "screenshot": "result_GH878CD_plaquette-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "GH878CD",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "selection": "plaquette-avant",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 128.11,
+    "timestamp": "2025-11-20T01:58:45.753Z",
+    "screenshot": "result_GH878CD_plaquette-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "GH878CD",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "selection": "plaquette-arriere",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 121.03,
+    "timestamp": "2025-11-20T01:59:09.784Z",
+    "screenshot": "result_GH878CD_plaquette-arriere.png"
+  },
+  {
+    "success": true,
+    "plate": "GH878CD",
+    "serviceId": "disques-avant",
+    "serviceName": "Disques de frein avant",
+    "selection": "disque-avant",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "price": 725.61,
+    "timestamp": "2025-11-20T01:59:34.452Z",
+    "screenshot": "result_GH878CD_disque-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "GH878CD",
+    "serviceId": "disques-avant",
+    "serviceName": "Disques de frein avant",
+    "selection": "disque-arriere",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "price": 371.48,
+    "timestamp": "2025-11-20T01:59:59.091Z",
+    "screenshot": "result_GH878CD_disque-arriere.png"
+  },
+  {
+    "success": true,
+    "plate": "GH878CD",
+    "serviceId": "amortisseurs-avant",
+    "serviceName": "Amortisseurs avant",
+    "selection": "amortisseurs-avant",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "price": 380.78,
+    "timestamp": "2025-11-20T02:00:33.562Z",
+    "screenshot": "result_GH878CD_amortisseurs-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "GH878CD",
+    "serviceId": "amortisseurs-avant",
+    "serviceName": "Amortisseurs avant",
+    "selection": "amortisseurs-arriere",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "price": 223.36,
+    "timestamp": "2025-11-20T02:00:58.685Z",
+    "screenshot": "result_GH878CD_amortisseurs-arriere.png"
+  },
+  {
+    "success": true,
+    "plate": "GH878CD",
+    "serviceId": "batterie",
+    "serviceName": "Batterie",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/batterie",
+    "price": 200,
+    "timestamp": "2025-11-20T02:01:35.949Z",
+    "screenshot": "result_GH878CD_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "GH878CD",
+    "serviceId": "courroie-distribution",
+    "serviceName": "Courroie de distribution",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/courroie-distribution",
+    "price": 200,
+    "timestamp": "2025-11-20T02:02:04.339Z",
+    "screenshot": "result_GH878CD_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "GH878CD",
+    "serviceId": "embrayage",
+    "serviceName": "Embrayage",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/embrayage",
+    "price": 200,
+    "timestamp": "2025-11-20T02:03:22.045Z",
+    "screenshot": "result_GH878CD_no-selection.png"
+  }
+]

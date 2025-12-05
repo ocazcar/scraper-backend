@@ -1,0 +1,126 @@
+{
+  "plate": "EV404YY",
+  "scrapedAt": "2025-11-19T14:29:34.612Z",
+  "durationSeconds": 174.02,
+  "totalServices": 12,
+  "successful": 8,
+  "failed": 4,
+  "results": [
+    {
+      "serviceId": "plaquettes-avant",
+      "serviceName": "Plaquettes de frein avant",
+      "category": "freinage",
+      "price": 80.9,
+      "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+      "success": true,
+      "scrapedAt": "2025-11-19T14:27:25.000Z",
+      "hasSelection": true
+    },
+    {
+      "serviceId": "plaquettes-arriere",
+      "serviceName": "Plaquettes de frein arrière",
+      "category": "freinage",
+      "price": 105.9,
+      "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+      "success": true,
+      "scrapedAt": "2025-11-19T14:27:24.961Z",
+      "hasSelection": true
+    },
+    {
+      "serviceId": "disques-avant",
+      "serviceName": "Disques de frein avant",
+      "category": "freinage",
+      "price": 244.8,
+      "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+      "success": true,
+      "scrapedAt": "2025-11-19T14:27:25.474Z",
+      "hasSelection": true
+    },
+    {
+      "serviceId": "disques-arriere",
+      "serviceName": "Disques de frein arrière",
+      "category": "freinage",
+      "success": false,
+      "error": "Élément \"Disque arrière\" non trouvé",
+      "scrapedAt": "2025-11-19T14:27:55.157Z",
+      "hasSelection": true
+    },
+    {
+      "serviceId": "amortisseurs-avant",
+      "serviceName": "Amortisseurs avant",
+      "category": "suspension",
+      "success": false,
+      "error": "Élément \"Amortisseurs avant\" non trouvé",
+      "scrapedAt": "2025-11-19T14:27:55.981Z",
+      "hasSelection": true
+    },
+    {
+      "serviceId": "amortisseurs-arriere",
+      "serviceName": "Amortisseurs arrière",
+      "category": "suspension",
+      "price": 324.1,
+      "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+      "success": true,
+      "scrapedAt": "2025-11-19T14:28:12.183Z",
+      "hasSelection": true
+    },
+    {
+      "serviceId": "embrayage",
+      "serviceName": "Embrayage",
+      "category": "transmission",
+      "price": 892.09,
+      "url": "https://www.midas.fr/devis/prestations/embrayage",
+      "success": true,
+      "scrapedAt": "2025-11-19T14:28:46.033Z",
+      "hasSelection": false
+    },
+    {
+      "serviceId": "batterie",
+      "serviceName": "Batterie",
+      "category": "electricite",
+      "success": false,
+      "error": "Élément \"Je n'ai pas le start & stop\" non trouvé",
+      "scrapedAt": "2025-11-19T14:28:42.272Z",
+      "hasSelection": true
+    },
+    {
+      "serviceId": "balais-essuie-glace-conducteur",
+      "serviceName": "Balais d'essuie-glace avant côté conducteur",
+      "category": "visibilite",
+      "price": 19.9,
+      "url": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+      "success": true,
+      "scrapedAt": "2025-11-19T14:28:59.306Z",
+      "hasSelection": true
+    },
+    {
+      "serviceId": "balais-essuie-glace-passager",
+      "serviceName": "Balais d'essuie-glace avant côté passager",
+      "category": "visibilite",
+      "success": false,
+      "error": "Élément \"Balai avant côté passager\" non trouvé",
+      "scrapedAt": "2025-11-19T14:29:29.055Z",
+      "hasSelection": true
+    },
+    {
+      "serviceId": "courroie-distribution",
+      "serviceName": "Courroie de distribution",
+      "category": "moteur",
+      "price": 725.75,
+      "url": "https://www.midas.fr/devis/prestations/courroie-distribution",
+      "success": true,
+      "scrapedAt": "2025-11-19T14:29:33.758Z",
+      "hasSelection": false
+    },
+    {
+      "serviceId": "climatisation",
+      "serviceName": "Climatisation",
+      "category": "climatisation",
+      "price": 159,
+      "url": "https://www.midas.fr/devis/prestations/climatisation",
+      "success": true,
+      "scrapedAt": "2025-11-19T14:29:34.612Z",
+      "hasSelection": false
+    }
+  ]
+}

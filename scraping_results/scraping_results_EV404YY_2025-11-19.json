@@ -1,0 +1,222 @@
+[
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "selection": "plaquette-arriere",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 105.9,
+    "timestamp": "2025-11-19T21:26:14.290Z",
+    "screenshot": "result_EV404YY_plaquette-arriere.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "embrayage",
+    "serviceName": "Embrayage",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/embrayage",
+    "price": 892.09,
+    "timestamp": "2025-11-19T21:37:48.739Z",
+    "screenshot": "result_EV404YY_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "disques-avant",
+    "serviceName": "Disques de frein avant",
+    "selection": "disque-avant",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "price": 244.8,
+    "timestamp": "2025-11-19T21:38:21.221Z",
+    "screenshot": "result_EV404YY_disque-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "batterie",
+    "serviceName": "Batterie",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/batterie",
+    "price": 240.28,
+    "timestamp": "2025-11-19T21:38:34.670Z",
+    "screenshot": "result_EV404YY_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "amortisseurs-avant",
+    "serviceName": "Amortisseurs avant",
+    "selection": "amortisseurs-avant",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "price": 505.23,
+    "timestamp": "2025-11-19T21:38:38.185Z",
+    "screenshot": "result_EV404YY_amortisseurs-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "climatisation",
+    "serviceName": "Climatisation",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/climatisation",
+    "price": 200,
+    "timestamp": "2025-11-19T21:38:41.029Z",
+    "screenshot": "result_EV404YY_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "balais-essuie-glace-conducteur",
+    "serviceName": "Balais d'essuie-glace avant côté conducteur",
+    "selection": "Balai avant côté passager",
+    "url": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+    "price": 200,
+    "timestamp": "2025-11-19T21:40:36.037Z",
+    "screenshot": "result_EV404YY_Balai avant côté passager.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "balais-essuie-glace-conducteur",
+    "serviceName": "Balais d'essuie-glace avant côté conducteur",
+    "selection": "Balai avant côté passager",
+    "url": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+    "price": 200,
+    "timestamp": "2025-11-19T21:40:48.656Z",
+    "screenshot": "result_EV404YY_Balai avant côté passager.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "balais-essuie-glace-conducteur",
+    "serviceName": "Balais d'essuie-glace avant côté conducteur",
+    "selection": "Balai avant côté passager",
+    "url": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+    "price": 200,
+    "timestamp": "2025-11-19T21:41:05.834Z",
+    "screenshot": "result_EV404YY_Balai avant côté passager.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "selection": "plaquette-avant",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 80.9,
+    "timestamp": "2025-11-19T21:50:59.742Z",
+    "screenshot": "result_EV404YY_plaquette-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "disques-avant",
+    "serviceName": "Disques de frein avant",
+    "selection": "disque-avant",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "price": 244.8,
+    "timestamp": "2025-11-19T21:52:06.512Z",
+    "screenshot": "result_EV404YY_disque-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "amortisseurs-avant",
+    "serviceName": "Amortisseurs avant",
+    "selection": "amortisseurs-avant",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "price": 505.23,
+    "timestamp": "2025-11-19T21:53:37.580Z",
+    "screenshot": "result_EV404YY_amortisseurs-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "batterie",
+    "serviceName": "Batterie",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/batterie",
+    "price": 240.28,
+    "timestamp": "2025-11-19T21:54:37.521Z",
+    "screenshot": "result_EV404YY_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "climatisation",
+    "serviceName": "Climatisation",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/climatisation",
+    "price": 200,
+    "timestamp": "2025-11-19T21:55:29.682Z",
+    "screenshot": "result_EV404YY_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "balais-essuie-glace-conducteur",
+    "serviceName": "Balais d'essuie-glace avant côté conducteur",
+    "selection": "Balai avant côté conducteur",
+    "url": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+    "price": 200,
+    "timestamp": "2025-11-19T21:57:40.354Z",
+    "screenshot": "result_EV404YY_Balai avant côté conducteur.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "courroie-distribution",
+    "serviceName": "Courroie de distribution",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/courroie-distribution",
+    "price": 50,
+    "timestamp": "2025-11-19T21:59:01.160Z",
+    "screenshot": "result_EV404YY_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "embrayage",
+    "serviceName": "Embrayage",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/embrayage",
+    "price": 892.09,
+    "timestamp": "2025-11-19T21:59:52.123Z",
+    "screenshot": "result_EV404YY_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "balais-essuie-glace-conducteur",
+    "serviceName": "Balais d'essuie-glace avant côté conducteur",
+    "selection": "Balai avant côté conducteur",
+    "url": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+    "price": 200,
+    "timestamp": "2025-11-19T22:08:02.214Z",
+    "screenshot": "result_EV404YY_Balai avant côté conducteur.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "balais-essuie-glace-conducteur",
+    "serviceName": "Balais d'essuie-glace avant côté conducteur",
+    "selection": "Balai avant côté conducteur",
+    "url": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+    "price": 200,
+    "timestamp": "2025-11-19T22:12:04.262Z",
+    "screenshot": "result_EV404YY_Balai avant côté conducteur.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "balais-essuie-glace-conducteur",
+    "serviceName": "Balais d'essuie-glace avant côté conducteur",
+    "selection": "Balai avant côté conducteur",
+    "url": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+    "price": 200,
+    "timestamp": "2025-11-19T22:18:27.240Z",
+    "screenshot": "result_EV404YY_Balai avant côté conducteur.png"
+  }
+]

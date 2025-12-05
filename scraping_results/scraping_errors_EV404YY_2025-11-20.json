@@ -1,0 +1,83 @@
+[
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "selection": "disque-avant",
+    "error": "locator.all: Target page, context or browser has been closed",
+    "timestamp": "2025-11-20T01:36:33.052Z",
+    "screenshot": "error_EV404YY_disque-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "selection": "disque-arriere",
+    "error": "elementHandle.click: Target page, context or browser has been closed\nCall log:\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div role=\"dialog\" aria-modal=\"true\" id=\"popin_tc_privacy\" aria-describedby=\"description\" class=\"tc-reset-css tc-privacy-banner tc-privacy-popin tc-privacy-mid\">…</div> from <div id=\"tc-privacy-wrapper\" class=\"tc-privacy-wrapper tc-privacy-override\">…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div role=\"dialog\" aria-modal=\"true\" id=\"popin_tc_privacy\" aria-describedby=\"description\" class=\"tc-reset-css tc-privacy-banner tc-privacy-popin tc-privacy-mid\">…</div> from <div id=\"tc-privacy-wrapper\" class=\"tc-privacy-wrapper tc-privacy-override\">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    21 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div role=\"dialog\" aria-modal=\"true\" id=\"popin_tc_privacy\" aria-describedby=\"description\" class=\"tc-reset-css tc-privacy-banner tc-privacy-popin tc-privacy-mid\">…</div> from <div id=\"tc-privacy-wrapper\" class=\"tc-privacy-wrapper tc-privacy-override\">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
+    "timestamp": "2025-11-20T01:36:55.577Z",
+    "screenshot": "error_EV404YY_disque-arriere.png"
+  },
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "locator.all: Target page, context or browser has been closed",
+    "timestamp": "2025-11-20T01:39:34.888Z",
+    "screenshot": "error_EV404YY_plaquette-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "elementHandle.click: Target page, context or browser has been closed\nCall log:\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div role=\"dialog\" aria-modal=\"true\" id=\"popin_tc_privacy\" aria-describedby=\"description\" class=\"tc-reset-css tc-privacy-banner tc-privacy-popin tc-privacy-mid\">…</div> from <div id=\"tc-privacy-wrapper\" class=\"tc-privacy-wrapper tc-privacy-override\">…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div role=\"dialog\" aria-modal=\"true\" id=\"popin_tc_privacy\" aria-describedby=\"description\" class=\"tc-reset-css tc-privacy-banner tc-privacy-popin tc-privacy-mid\">…</div> from <div id=\"tc-privacy-wrapper\" class=\"tc-privacy-wrapper tc-privacy-override\">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    13 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div role=\"dialog\" aria-modal=\"true\" id=\"popin_tc_privacy\" aria-describedby=\"description\" class=\"tc-reset-css tc-privacy-banner tc-privacy-popin tc-privacy-mid\">…</div> from <div id=\"tc-privacy-wrapper\" class=\"tc-privacy-wrapper tc-privacy-override\">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
+    "timestamp": "2025-11-20T01:40:43.680Z",
+    "screenshot": "error_EV404YY_plaquette-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-arriere",
+    "error": "locator.all: Target page, context or browser has been closed",
+    "timestamp": "2025-11-20T01:41:10.187Z",
+    "screenshot": "error_EV404YY_plaquette-arriere.png"
+  },
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "elementHandle.click: Target page, context or browser has been closed\nCall log:\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div role=\"dialog\" aria-modal=\"true\" id=\"popin_tc_privacy\" aria-describedby=\"description\" class=\"tc-reset-css tc-privacy-banner tc-privacy-popin tc-privacy-mid\">…</div> from <div id=\"tc-privacy-wrapper\" class=\"tc-privacy-wrapper tc-privacy-override\">…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div role=\"dialog\" aria-modal=\"true\" id=\"popin_tc_privacy\" aria-describedby=\"description\" class=\"tc-reset-css tc-privacy-banner tc-privacy-popin tc-privacy-mid\">…</div> from <div id=\"tc-privacy-wrapper\" class=\"tc-privacy-wrapper tc-privacy-override\">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    33 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div role=\"dialog\" aria-modal=\"true\" id=\"popin_tc_privacy\" aria-describedby=\"description\" class=\"tc-reset-css tc-privacy-banner tc-privacy-popin tc-privacy-mid\">…</div> from <div id=\"tc-privacy-wrapper\" class=\"tc-privacy-wrapper tc-privacy-override\">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
+    "timestamp": "2025-11-20T01:43:54.126Z",
+    "screenshot": "error_EV404YY_plaquette-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "elementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - element is outside of the viewport\n  - retrying click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div role=\"dialog\" aria-modal=\"true\" id=\"popin_tc_privacy\" aria-describedby=\"description\" class=\"tc-reset-css tc-privacy-banner tc-privacy-popin tc-privacy-mid\">…</div> from <div id=\"tc-privacy-wrapper\" class=\"tc-privacy-wrapper tc-privacy-override\">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div role=\"dialog\" aria-modal=\"true\" id=\"popin_tc_privacy\" aria-describedby=\"description\" class=\"tc-reset-css tc-privacy-banner tc-privacy-popin tc-privacy-mid\">…</div> from <div id=\"tc-privacy-wrapper\" class=\"tc-privacy-wrapper tc-privacy-override\">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    18 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div role=\"dialog\" aria-modal=\"true\" id=\"popin_tc_privacy\" aria-describedby=\"description\" class=\"tc-reset-css tc-privacy-banner tc-privacy-popin tc-privacy-mid\">…</div> from <div id=\"tc-privacy-wrapper\" class=\"tc-privacy-wrapper tc-privacy-override\">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
+    "timestamp": "2025-11-20T01:46:29.615Z",
+    "screenshot": "error_EV404YY_plaquette-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-20T01:50:29.322Z",
+    "screenshot": "error_EV404YY_plaquette-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-arriere",
+    "error": "Champ de plaque introuvable",
+    "timestamp": "2025-11-20T10:22:42.957Z",
+    "screenshot": "error_EV404YY_plaquette-arriere.png"
+  }
+]

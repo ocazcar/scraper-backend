@@ -1,0 +1,89 @@
+[
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/embrayage",
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-19T16:44:36.053Z",
+    "screenshot": "error_plate_input_CC368ER.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-19T16:45:32.428Z",
+    "screenshot": "error_plate_input_CC368ER.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "error": "Élément \"Disque avant\" non trouvé",
+    "timestamp": "2025-11-19T16:59:01.490Z",
+    "screenshot": "error_plate_input_CC368ER.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "Champ avec placeholder \"AB123CD\" non trouvé",
+    "timestamp": "2025-11-19T17:16:34.771Z",
+    "screenshot": "error_CC368ER_plaquette-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('input[type=\"text\"]:visible').first()\n",
+    "timestamp": "2025-11-19T23:16:37.958Z",
+    "screenshot": "error_CC368ER_plaquette-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-arriere",
+    "error": "Champ avec placeholder \"AB123CD\" non trouvé",
+    "timestamp": "2025-11-19T23:20:43.315Z",
+    "screenshot": "error_CC368ER_plaquette-arriere.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "selection": "disque-avant",
+    "error": "plateInput.elementHandle is not a function",
+    "timestamp": "2025-11-19T23:25:58.624Z",
+    "screenshot": "error_CC368ER_disque-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "selection": "disque-arriere",
+    "error": "plateInput.elementHandle is not a function",
+    "timestamp": "2025-11-19T23:29:26.272Z",
+    "screenshot": "error_CC368ER_disque-arriere.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "selection": "amortisseurs-avant",
+    "error": "plateInputLocator is not defined",
+    "timestamp": "2025-11-19T23:34:39.606Z",
+    "screenshot": "error_CC368ER_amortisseurs-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "selection": "amortisseurs-arriere",
+    "error": "Élément \"Amortisseurs arrière\" non trouvé. Vérifiez la capture d'écran debug_balais_CC368ER_1763595395133.png",
+    "timestamp": "2025-11-19T23:36:35.266Z",
+    "screenshot": "error_CC368ER_amortisseurs-arriere.png"
+  }
+]

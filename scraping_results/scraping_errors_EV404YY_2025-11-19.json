@@ -1,0 +1,47 @@
+[
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+    "selection": "balai-avant-passager",
+    "error": "Élément \"balai-avant-passager\" non trouvé",
+    "timestamp": "2025-11-19T21:40:04.861Z",
+    "screenshot": "error_EV404YY_balai-avant-passager.png"
+  },
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+    "selection": "balais-essuie-glace-passager",
+    "error": "Élément \"balais-essuie-glace-passager\" non trouvé",
+    "timestamp": "2025-11-19T21:40:09.573Z",
+    "screenshot": "error_EV404YY_balais-essuie-glace-passager.png"
+  },
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+    "selection": null,
+    "error": "Bouton calculer non trouvé",
+    "timestamp": "2025-11-19T21:40:31.244Z",
+    "screenshot": "error_EV404YY_no-selection.png"
+  },
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+    "selection": "Balai avant côté conducteur",
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-19T22:08:58.352Z",
+    "screenshot": "error_EV404YY_Balai avant côté conducteur.png"
+  },
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+    "selection": "Balai avant côté conducteur",
+    "error": "page.waitForTimeout: Target page, context or browser has been closed",
+    "timestamp": "2025-11-19T22:12:25.009Z",
+    "screenshot": "error_EV404YY_Balai avant côté conducteur.png"
+  }
+]

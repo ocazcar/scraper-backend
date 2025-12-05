@@ -1,0 +1,279 @@
+{
+  "services": [
+    {
+      "id": "plaquettes-avant",
+      "name": "Plaquettes de frein avant",
+      "midasService": "plaquettes-avant",
+      "midasUrl": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+      "category": "freinage",
+      "description": "Remplacement des plaquettes de frein avant",
+      "hasSelection": true,
+      "selectionOptions": ["Plaquette avant", "Plaquette arrière", "Les deux"],
+      "selectionType": "plaquettes"
+    },
+    {
+      "id": "plaquettes-arriere",
+      "name": "Plaquettes de frein arrière",
+      "midasService": "plaquettes-arriere",
+      "midasUrl": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+      "category": "freinage",
+      "description": "Remplacement des plaquettes de frein arrière",
+      "hasSelection": true,
+      "selectionOptions": ["Plaquette avant", "Plaquette arrière", "Les deux"],
+      "selectionType": "plaquettes"
+    },
+    {
+      "id": "plaquettes-avant-et-arriere",
+      "name": "Plaquettes de frein avant et arrière",
+      "midasService": "plaquettes-avant-et-arriere",
+      "midasUrl": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+      "category": "freinage",
+      "description": "Remplacement des plaquettes de frein avant et arrière",
+      "hasSelection": true,
+      "selectionOptions": ["Plaquette avant", "Plaquette arrière", "Les deux"],
+      "selectionType": "plaquettes",
+      "skipScraping": true
+    },
+    {
+      "id": "disques-avant",
+      "name": "Disques de frein avant",
+      "midasService": "disques-avant",
+      "midasUrl": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+      "category": "freinage",
+      "description": "Remplacement des disques de frein avant",
+      "hasSelection": true,
+      "selectionOptions": ["Disque avant", "Disque arrière", "Les deux"],
+      "selectionType": "disques"
+    },
+    {
+      "id": "disques-arriere",
+      "name": "Disques de frein arrière",
+      "midasService": "disques-arriere",
+      "midasUrl": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+      "category": "freinage",
+      "description": "Remplacement des disques de frein arrière",
+      "hasSelection": true,
+      "selectionOptions": ["Disque avant", "Disque arrière", "Les deux"],
+      "selectionType": "disques"
+    },
+    {
+      "id": "disques-avant-et-arriere",
+      "name": "Disques de frein avant et arrière",
+      "midasService": "disques-avant-et-arriere",
+      "midasUrl": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+      "category": "freinage",
+      "description": "Remplacement des disques de frein avant et arrière",
+      "hasSelection": true,
+      "selectionOptions": ["Disque avant", "Disque arrière", "Les deux"],
+      "selectionType": "disques",
+      "skipScraping": true
+    },
+    {
+      "id": "amortisseurs-avant",
+      "name": "Amortisseurs avant",
+      "midasService": "amortisseurs-avant",
+      "midasUrl": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+      "category": "suspension",
+      "description": "Remplacement des amortisseurs avant",
+      "hasSelection": true,
+      "selectionOptions": ["Amortisseurs avant", "Amortisseurs arrière", "Les deux"],
+      "selectionType": "amortisseurs"
+    },
+    {
+      "id": "amortisseurs-arriere",
+      "name": "Amortisseurs arrière",
+      "midasService": "amortisseurs-arriere",
+      "midasUrl": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+      "category": "suspension",
+      "description": "Remplacement des amortisseurs arrière",
+      "hasSelection": true,
+      "selectionOptions": ["Amortisseurs avant", "Amortisseurs arrière", "Les deux"],
+      "selectionType": "amortisseurs"
+    },
+    {
+      "id": "amortisseurs-complet",
+      "name": "Amortisseurs complets (avant et arrière)",
+      "midasService": "amortisseurs-complet",
+      "midasUrl": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+      "category": "suspension",
+      "description": "Remplacement des amortisseurs avant et arrière",
+      "hasSelection": true,
+      "selectionOptions": ["Amortisseurs avant", "Amortisseurs arrière", "Les deux"],
+      "selectionType": "amortisseurs",
+      "skipScraping": true
+    },
+    {
+      "id": "vidange",
+      "name": "Vidange",
+      "midasService": "vidange",
+      "category": "entretien",
+      "description": "Vidange d'huile moteur",
+      "skipScraping": true
+    },
+    {
+      "id": "filtre-a-huile",
+      "name": "Filtre à huile",
+      "midasService": "filtre-a-huile",
+      "category": "entretien",
+      "description": "Remplacement du filtre à huile",
+      "skipScraping": true
+    },
+    {
+      "id": "filtre-a-air",
+      "name": "Filtre à air",
+      "midasService": "filtre-a-air",
+      "category": "entretien",
+      "description": "Remplacement du filtre à air",
+      "skipScraping": true
+    },
+    {
+      "id": "filtre-habitacle",
+      "name": "Filtre d'habitacle",
+      "midasService": "filtre-habitacle",
+      "category": "entretien",
+      "description": "Remplacement du filtre d'habitacle",
+      "skipScraping": true
+    },
+    {
+      "id": "embrayage",
+      "name": "Embrayage",
+      "midasService": "embrayage",
+      "midasUrl": "https://www.midas.fr/devis/prestations/embrayage",
+      "category": "transmission",
+      "description": "Remplacement de l'embrayage",
+      "hasSelection": false
+    },
+    {
+      "id": "batterie",
+      "name": "Batterie",
+      "midasService": "batterie",
+      "midasUrl": "https://www.midas.fr/devis/prestations/batterie",
+      "category": "electricite",
+      "description": "Remplacement de la batterie",
+      "hasSelection": true,
+      "selectionOptions": ["Je n'ai pas le start & stop", "J'ai le start & stop"],
+      "selectionType": "batterie"
+    },
+    {
+      "id": "pneus-avant",
+      "name": "Pneus avant",
+      "midasService": "pneus-avant",
+      "category": "pneus",
+      "description": "Remplacement des pneus avant",
+      "skipScraping": true
+    },
+    {
+      "id": "pneus-arriere",
+      "name": "Pneus arrière",
+      "midasService": "pneus-arriere",
+      "category": "pneus",
+      "description": "Remplacement des pneus arrière",
+      "skipScraping": true
+    },
+    {
+      "id": "pneus-complet",
+      "name": "Pneus complets (4 pneus)",
+      "midasService": "pneus-complet",
+      "category": "pneus",
+      "description": "Remplacement des 4 pneus",
+      "skipScraping": true
+    },
+    {
+      "id": "balais-essuie-glace-conducteur",
+      "name": "Balais d'essuie-glace avant côté conducteur",
+      "midasService": "balais-essuie-glace-conducteur",
+      "midasUrl": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+      "category": "visibilite",
+      "description": "Remplacement du balai d'essuie-glace avant côté conducteur",
+      "hasSelection": true,
+      "selectionOptions": ["Balai avant côté conducteur", "Balai avant côté passager", "Tous"],
+      "selectionType": "balais"
+    },
+    {
+      "id": "balais-essuie-glace-passager",
+      "name": "Balais d'essuie-glace avant côté passager",
+      "midasService": "balais-essuie-glace-passager",
+      "midasUrl": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+      "category": "visibilite",
+      "description": "Remplacement du balai d'essuie-glace avant côté passager",
+      "hasSelection": true,
+      "selectionOptions": ["Balai avant côté conducteur", "Balai avant côté passager", "Tous"],
+      "selectionType": "balais"
+    },
+    {
+      "id": "balais-essuie-glace-tous",
+      "name": "Balais d'essuie-glace (tous)",
+      "midasService": "balais-essuie-glace-tous",
+      "midasUrl": "https://www.midas.fr/devis/prestations/balais-essuie-glaces",
+      "category": "visibilite",
+      "description": "Remplacement des balais d'essuie-glace avant (conducteur + passager)",
+      "hasSelection": true,
+      "selectionOptions": ["Balai avant côté conducteur", "Balai avant côté passager", "Tous"],
+      "selectionType": "balais",
+      "skipScraping": true
+    },
+    {
+      "id": "bougies",
+      "name": "Bougies d'allumage",
+      "midasService": "bougies",
+      "category": "moteur",
+      "description": "Remplacement des bougies d'allumage",
+      "skipScraping": true
+    },
+    {
+      "id": "courroie-distribution",
+      "name": "Courroie de distribution",
+      "midasService": "courroie-distribution",
+      "midasUrl": "https://www.midas.fr/devis/prestations/courroie-distribution",
+      "category": "moteur",
+      "description": "Remplacement de la courroie de distribution",
+      "hasSelection": false
+    },
+    {
+      "id": "climatisation",
+      "name": "Climatisation",
+      "midasService": "climatisation",
+      "midasUrl": "https://www.midas.fr/devis/prestations/climatisation",
+      "category": "climatisation",
+      "description": "Recharge climatisation",
+      "hasSelection": false
+    },
+    {
+      "id": "courroie-accessoires",
+      "name": "Courroie d'accessoires",
+      "midasService": "courroie-accessoires",
+      "category": "moteur",
+      "description": "Remplacement de la courroie d'accessoires",
+      "skipScraping": true
+    },
+    {
+      "id": "diagnostic-electronique",
+      "name": "Diagnostic électronique",
+      "midasService": "diagnostic-electronique",
+      "category": "diagnostic",
+      "description": "Diagnostic électronique du véhicule",
+      "skipScraping": true
+    },
+    {
+      "id": "reparation-crevaison",
+      "name": "Réparation de crevaison",
+      "midasService": "reparation-crevaison",
+      "category": "pneus",
+      "description": "Réparation d'une crevaison",
+      "skipScraping": true
+    }
+  ],
+  "categories": {
+    "freinage": "Services de freinage",
+    "suspension": "Services de suspension",
+    "entretien": "Entretien et maintenance",
+    "transmission": "Transmission",
+    "electricite": "Électricité et électronique",
+    "pneus": "Pneus et roues",
+    "visibilite": "Visibilité et éclairage",
+    "moteur": "Moteur",
+    "diagnostic": "Diagnostic",
+    "climatisation": "Climatisation"
+  }
+}
+

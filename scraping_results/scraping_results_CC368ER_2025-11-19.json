@@ -1,0 +1,165 @@
+[
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 115.9,
+    "timestamp": "2025-11-19T16:36:33.525Z",
+    "screenshot": "test_plate_input_CC368ER.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "climatisation",
+    "serviceName": "Climatisation",
+    "url": "https://www.midas.fr/devis/prestations/climatisation",
+    "price": null,
+    "timestamp": "2025-11-19T16:41:55.271Z",
+    "screenshot": "test_plate_input_CC368ER.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "selection": "plaquette-avant",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 115.9,
+    "timestamp": "2025-11-19T17:17:33.542Z",
+    "screenshot": "result_CC368ER_plaquette-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "disques-avant",
+    "serviceName": "Disques de frein avant",
+    "selection": "disque-arriere",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "price": 428.7,
+    "timestamp": "2025-11-19T17:18:42.623Z",
+    "screenshot": "result_CC368ER_disque-arriere.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "embrayage",
+    "serviceName": "Embrayage",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/embrayage",
+    "price": 254.32,
+    "timestamp": "2025-11-19T17:20:40.156Z",
+    "screenshot": "result_CC368ER_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "courroie-distribution",
+    "serviceName": "Courroie de distribution",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/courroie-distribution",
+    "price": null,
+    "timestamp": "2025-11-19T17:22:50.074Z",
+    "screenshot": "result_CC368ER_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "climatisation",
+    "serviceName": "Climatisation",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/climatisation",
+    "price": 200,
+    "timestamp": "2025-11-19T17:28:28.642Z",
+    "screenshot": "result_CC368ER_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "courroie-distribution",
+    "serviceName": "Courroie de distribution",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/courroie-distribution",
+    "price": 200,
+    "timestamp": "2025-11-19T17:30:42.665Z",
+    "screenshot": "result_CC368ER_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "climatisation",
+    "serviceName": "Climatisation",
+    "selection": null,
+    "url": "https://www.midas.fr/devis/prestations/climatisation",
+    "price": 7900,
+    "timestamp": "2025-11-19T17:33:12.674Z",
+    "screenshot": "result_CC368ER_no-selection.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "selection": "plaquette-avant",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 115.9,
+    "timestamp": "2025-11-19T23:40:30.682Z",
+    "screenshot": "result_CC368ER_plaquette-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "selection": "plaquette-arriere",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 50,
+    "timestamp": "2025-11-19T23:42:42.923Z",
+    "screenshot": "result_CC368ER_plaquette-arriere.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "disques-avant",
+    "serviceName": "Disques de frein avant",
+    "selection": "disque-avant",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "price": 50,
+    "timestamp": "2025-11-19T23:45:31.925Z",
+    "screenshot": "result_CC368ER_disque-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "disques-avant",
+    "serviceName": "Disques de frein avant",
+    "selection": "disque-arriere",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "price": 428.7,
+    "timestamp": "2025-11-19T23:47:56.483Z",
+    "screenshot": "result_CC368ER_disque-arriere.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "amortisseurs-avant",
+    "serviceName": "Amortisseurs avant",
+    "selection": "amortisseurs-avant",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "price": 642.37,
+    "timestamp": "2025-11-19T23:49:56.787Z",
+    "screenshot": "result_CC368ER_amortisseurs-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "CC368ER",
+    "serviceId": "amortisseurs-avant",
+    "serviceName": "Amortisseurs avant",
+    "selection": "amortisseurs-arriere",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "price": 301.94,
+    "timestamp": "2025-11-19T23:58:26.623Z",
+    "screenshot": "result_CC368ER_amortisseurs-arriere.png"
+  }
+]

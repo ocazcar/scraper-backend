@@ -1,0 +1,24 @@
+[
+  {
+    "success": true,
+    "plate": "EN062DX",
+    "serviceId": "disques-avant",
+    "serviceName": "Disques de frein avant",
+    "selection": "disque-avant",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "price": 50,
+    "timestamp": "2025-11-26T21:56:04.791Z",
+    "screenshot": "result_EN062DX_disque-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "EN062DX",
+    "serviceId": "amortisseurs-avant",
+    "serviceName": "Amortisseurs avant",
+    "selection": "amortisseurs-avant",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "price": 615.42,
+    "timestamp": "2025-11-26T21:56:46.208Z",
+    "screenshot": "result_EN062DX_amortisseurs-avant.png"
+  }
+]

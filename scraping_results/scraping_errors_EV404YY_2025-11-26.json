@@ -1,0 +1,11 @@
+[
+  {
+    "success": false,
+    "plate": "EV404YY",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "selection": "disque-avant",
+    "error": "locator.textContent: Target page, context or browser has been closed",
+    "timestamp": "2025-11-26T12:40:58.843Z",
+    "screenshot": "error_EV404YY_disque-avant.png"
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "amortisseurs-avant",
+    "serviceName": "Amortisseurs avant",
+    "selection": "amortisseurs-arriere",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "price": 324.1,
+    "timestamp": "2025-11-23T22:13:48.230Z",
+    "screenshot": "result_EV404YY_amortisseurs-arriere.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "selection": "plaquette-arriere",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 105.9,
+    "timestamp": "2025-11-23T22:33:18.658Z",
+    "screenshot": "result_EV404YY_plaquette-arriere.png"
+  }
+]

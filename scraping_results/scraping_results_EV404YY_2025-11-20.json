@@ -1,0 +1,68 @@
+[
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "disques-avant",
+    "serviceName": "Disques de frein avant",
+    "selection": "disque-avant",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "price": 244.8,
+    "timestamp": "2025-11-20T10:27:24.001Z",
+    "screenshot": "result_EV404YY_disque-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "selection": "plaquette-avant",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 50,
+    "timestamp": "2025-11-20T15:19:07.952Z",
+    "screenshot": "result_EV404YY_plaquette-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "amortisseurs-avant",
+    "serviceName": "Amortisseurs avant",
+    "selection": "amortisseurs-avant",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "price": 50,
+    "timestamp": "2025-11-20T15:23:12.339Z",
+    "screenshot": "result_EV404YY_amortisseurs-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "amortisseurs-avant",
+    "serviceName": "Amortisseurs avant",
+    "selection": "amortisseurs-arriere",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "price": 324.1,
+    "timestamp": "2025-11-20T15:26:14.632Z",
+    "screenshot": "result_EV404YY_amortisseurs-arriere.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "selection": "plaquette-avant",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 80.9,
+    "timestamp": "2025-11-20T15:27:56.037Z",
+    "screenshot": "result_EV404YY_plaquette-avant.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "amortisseurs-avant",
+    "serviceName": "Amortisseurs avant",
+    "selection": "amortisseurs-avant",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "price": 505.23,
+    "timestamp": "2025-11-20T17:59:35.672Z",
+    "screenshot": "result_EV404YY_amortisseurs-avant.png"
+  }
+]

@@ -1,0 +1,83 @@
+[
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "page.screenshot: Target page, context or browser has been closed",
+    "timestamp": "2025-11-26T12:42:01.950Z",
+    "screenshot": "error_CC368ER_plaquette-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/amortisseurs-avant-et-arriere",
+    "selection": "amortisseurs-arriere",
+    "error": "page.screenshot: Target page, context or browser has been closed",
+    "timestamp": "2025-11-26T12:52:17.390Z",
+    "screenshot": "error_CC368ER_amortisseurs-arriere.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/disques-de-freins-avant-et-arriere",
+    "selection": "disque-arriere",
+    "error": "page.screenshot: Timeout 30000ms exceeded.\nCall log:\n  - taking page screenshot\n",
+    "timestamp": "2025-11-26T13:21:47.981Z",
+    "screenshot": "error_CC368ER_disque-arriere.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "Champ \"AB123CD\" introuvable",
+    "timestamp": "2025-11-26T13:24:56.370Z",
+    "screenshot": "error_CC368ER_plaquette-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "Champ \"AB123CD\" introuvable",
+    "timestamp": "2025-11-26T13:34:14.895Z",
+    "screenshot": "error_CC368ER_plaquette-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "locator.waitFor: Timeout 6000ms exceeded.\nCall log:\n  - waiting for locator('button, a, [role=\"button\"], [type=\"submit\"], div[class*=\"button\"], span[class*=\"button\"]').filter({ hasText: /je calcule|valider mon devis|calculer mon devis/i }).first() to be visible\n",
+    "timestamp": "2025-11-26T13:42:04.144Z",
+    "screenshot": "error_CC368ER_plaquette-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "locator.waitFor: Timeout 6000ms exceeded.\nCall log:\n  - waiting for locator('button, a, [role=\"button\"], [type=\"submit\"], div[class*=\"button\"], span[class*=\"button\"]').filter({ hasText: /je calcule|valider mon devis|calculer mon devis/i }).first() to be visible\n",
+    "timestamp": "2025-11-26T13:48:28.124Z",
+    "screenshot": "error_CC368ER_plaquette-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "locator.waitFor: Timeout 12000ms exceeded.\nCall log:\n  - waiting for locator('button, a, [role=\"button\"], [type=\"submit\"], div[class*=\"button\"], span[class*=\"button\"]').filter({ hasText: /je calcule|valider mon devis|calculer mon devis/i }).first() to be visible\n",
+    "timestamp": "2025-11-26T13:55:22.258Z",
+    "screenshot": "error_CC368ER_plaquette-avant.png"
+  },
+  {
+    "success": false,
+    "plate": "CC368ER",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "selection": "plaquette-avant",
+    "error": "locator.waitFor: Timeout 12000ms exceeded.\nCall log:\n  - waiting for locator('button, a, [role=\"button\"], [type=\"submit\"], div[class*=\"button\"], span[class*=\"button\"]').filter({ hasText: /je calcule|valider mon devis|calculer mon devis/i }).first() to be visible\n",
+    "timestamp": "2025-11-26T13:57:38.004Z",
+    "screenshot": "error_CC368ER_plaquette-avant.png"
+  }
+]

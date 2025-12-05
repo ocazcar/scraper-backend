@@ -1,0 +1,24 @@
+[
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "selection": "plaquette-arriere",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 105.9,
+    "timestamp": "2025-11-26T10:53:50.623Z",
+    "screenshot": "result_EV404YY_plaquette-arriere.png"
+  },
+  {
+    "success": true,
+    "plate": "EV404YY",
+    "serviceId": "plaquettes-avant",
+    "serviceName": "Plaquettes de frein avant",
+    "selection": "plaquette-avant",
+    "url": "https://www.midas.fr/devis/prestations/plaquettes-de-freins-avant-et-arriere",
+    "price": 80.9,
+    "timestamp": "2025-11-26T10:54:24.110Z",
+    "screenshot": "result_EV404YY_plaquette-avant.png"
+  }
+]
