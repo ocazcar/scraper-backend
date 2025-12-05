@@ -108,3 +108,47 @@ TTL par défaut : 1 heure
 - **Respect des robots.txt** : Vérifier avant de scraper
 - **Légalité** : S'assurer que le scraping est légal dans votre juridiction
 
+## Mode debug visuel (Chromium non-headless)
+
+Ce mode permet de voir en direct ce que fait Playwright sur le VPS.
+
+1. **Stopper la prod pour éviter les conflits**
+
+   ```bash
+   pm2 stop scraper-backend
+   ```
+
+2. **Créer un tunnel SSH depuis ton Mac**
+
+   ```bash
+   ssh -L 9222:localhost:9222 root@31.97.55.30
+   ```
+
+3. **Sur le VPS (une fois connecté)**
+
+   ```bash
+   cd /root/scraper-backend
+   chmod +x start_scraper_debug.sh   # 1ʳᵉ fois uniquement
+   ./start_scraper_debug.sh
+   ```
+
+   Le serveur se lance avec `DEBUG_VISUAL=true` et Chromium non-headless (remote debugging sur `localhost:9222`).
+
+4. **Sur ton Mac**
+
+   - Ouvre Chrome → `chrome://inspect`
+   - Ajoute `localhost:9222` dans “Devices”
+   - Clique sur “inspect” pour voir l’onglet piloté par Playwright (console, réseau, écran en direct)
+
+5. **Pendant ce mode**
+
+   - Les requêtes vers `https://scraper.ocazcar.fr/api/price` utilisent ce navigateur visuel
+   - Tu peux suivre chaque étape et récupérer les captures dans `debug-screenshots/`
+
+6. **Revenir en prod**
+
+   ```bash
+   pm2 start scraper-backend
+   pm2 save
+   ```
+

@@ -4,6 +4,35 @@
  */
 
 const { chromium, webkit } = require('playwright');
+const fs = require('fs');
+const path = require('path');
+
+const DEBUG_VISUAL = process.env.DEBUG_VISUAL === 'true';
+const REMOTE_DEBUG_PORT = Number(process.env.REMOTE_DEBUG_PORT || 9222);
+const DEBUG_SCREENSHOT_DIR = path.join(__dirname, 'debug-screenshots');
+
+const ensureDebugDir = () => {
+  if (!DEBUG_VISUAL) return;
+  if (!fs.existsSync(DEBUG_SCREENSHOT_DIR)) {
+    fs.mkdirSync(DEBUG_SCREENSHOT_DIR, { recursive: true });
+  }
+};
+
+const logStep = (message) => {
+  console.log(`[SCRAPER] ${message}`);
+};
+
+const debugScreenshot = async (page, label) => {
+  if (!DEBUG_VISUAL || !page) return;
+  ensureDebugDir();
+  const safe = label.replace(/\s+/g, '-');
+  const filePath = path.join(
+    DEBUG_SCREENSHOT_DIR,
+    `${Date.now()}-${safe}.png`
+  );
+  await page.screenshot({ path: filePath, fullPage: true });
+  console.log(`[DEBUG] Screenshot enregistré → ${filePath}`);
+};
 const servicesFile = require('./services_config.json');
 const servicesList = Array.isArray(servicesFile.services)
   ? servicesFile.services
@@ -95,6 +124,7 @@ const matchesAnyPattern = (normalizedValue, matchers = []) =>
   matchers.some((tokens) => tokens.every((token) => normalizedValue.includes(token)));
 
 const resolveHeadlessMode = () => {
+  if (DEBUG_VISUAL) return false;
   if (process.env.KEEP_BROWSER_OPEN === 'true') return false;
   if (process.env.HEADLESS === 'false') return false;
   return true;
@@ -112,7 +142,13 @@ const CHROMIUM_HEADLESS_ARGS = [
 
 const buildChromiumLaunchOptions = (headless) => ({
   headless,
-  args: headless
+  args: DEBUG_VISUAL
+    ? [
+        `--remote-debugging-port=${REMOTE_DEBUG_PORT}`,
+        '--start-maximized',
+        '--disable-gpu',
+      ]
+    : headless
     ? [...CHROMIUM_HEADLESS_ARGS]
     : ['--disable-blink-features=AutomationControlled'],
 });
@@ -289,22 +325,28 @@ async function runScrapeFlow(plate, serviceConfig = null) {
     }
 
     const headless = resolveHeadlessMode();
-    try {
-      const webkitOptions = buildWebkitLaunchOptions(headless);
-      browser = await webkit.launch(webkitOptions);
-      console.log(
-        `   ✅ WebKit lancé (${webkitOptions.headless ? 'headless' : 'headed'})`
-      );
-    } catch (webkitError) {
-      console.log(
-        '   ⚠️  WebKit indisponible, fallback Chromium:',
-        webkitError.message
-      );
-      const chromiumOptions = buildChromiumLaunchOptions(headless);
+    if (DEBUG_VISUAL) {
+      const chromiumOptions = buildChromiumLaunchOptions(false);
       browser = await chromium.launch(chromiumOptions);
-      console.log(
-        `   ✅ Chromium lancé (${chromiumOptions.headless ? 'headless' : 'headed'})`
-      );
+      logStep('Chromium lancé en mode visuel (remote debugging actif)');
+    } else {
+      try {
+        const webkitOptions = buildWebkitLaunchOptions(headless);
+        browser = await webkit.launch(webkitOptions);
+        logStep(
+          `WebKit lancé (${webkitOptions.headless ? 'headless' : 'headed'})`
+        );
+      } catch (webkitError) {
+        console.log(
+          '   ⚠️  WebKit indisponible, fallback Chromium:',
+          webkitError.message
+        );
+        const chromiumOptions = buildChromiumLaunchOptions(headless);
+        browser = await chromium.launch(chromiumOptions);
+        logStep(
+          `Chromium lancé (${chromiumOptions.headless ? 'headless' : 'headed'})`
+        );
+      }
     }
     
     context = await browser.newContext({
@@ -366,8 +408,9 @@ async function runScrapeFlow(plate, serviceConfig = null) {
     };
 
     // Étape 1: Aller sur la page de devis
-    console.log(`📍 Navigation vers: ${serviceConfig.midasUrl}`);
+    logStep(`Navigation vers ${serviceConfig.midasUrl}`);
     await page.goto(serviceConfig.midasUrl, { waitUntil: 'networkidle' });
+    await debugScreenshot(page, 'apres-navigation');
     await page
       .waitForSelector(
         'input[placeholder*="AB123CD"], input[name*="plate"], label:has-text("Mon numéro de plaque")',
@@ -379,7 +422,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
     await closeDetectionPopups(page);
 
     // Étape 2: Accepter les cookies (comme dans la version qui fonctionnait)
-    console.log('🍪 Acceptation des cookies...');
+    logStep('Tentative acceptation cookies');
     try {
       const acceptButton = await page.locator('button:has-text("Accepter et continuer")').first();
       if (await acceptButton.isVisible({ timeout: 3000 })) {
@@ -394,7 +437,8 @@ async function runScrapeFlow(plate, serviceConfig = null) {
     }
 
     // Étape 3: Trouver et remplir le champ plaque (logique qui fonctionnait)
-    console.log('🔍 Localisation du champ avec "AB123CD"...');
+    logStep('Recherche du champ immatriculation (AB123CD)');
+    await debugScreenshot(page, 'avant-recherche-champ');
     await page
       .waitForSelector('input[placeholder*="AB123CD"], input[name*="plate"], form:has-text("Mon numéro de plaque")', {
         timeout: 4000,
@@ -410,7 +454,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
       const inputByPlaceholder = await page.locator('input[placeholder*="AB123CD"]').first();
       if (await inputByPlaceholder.isVisible({ timeout: 2000 })) {
         plateInput = inputByPlaceholder;
-        console.log('   ✅ Champ trouvé par placeholder');
+        logStep('Champ trouvé par placeholder');
       }
     } catch (e) {
       // Continuer
@@ -421,14 +465,14 @@ async function runScrapeFlow(plate, serviceConfig = null) {
       try {
         const plateSection = await page.locator('text="Mon numéro de plaque"').first();
         if (await plateSection.isVisible({ timeout: 2000 })) {
-          console.log('   ✅ Section "Mon numéro de plaque" trouvée');
+          logStep('Section "Mon numéro de plaque" trouvée');
           
           const sectionInput = await plateSection.locator('..').locator('input').first();
           if (await sectionInput.isVisible({ timeout: 1000 })) {
             const value = await sectionInput.inputValue() || '';
             if (value.includes('AB123CD') || value.includes('AB-123-CD')) {
               plateInput = sectionInput;
-              console.log(`   ✅ Champ trouvé dans la section (valeur: "${value}")`);
+              logStep(`Champ trouvé dans la section (valeur: "${value}")`);
             }
           }
         }
@@ -441,7 +485,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
     if (!plateInput) {
       try {
         const allInputs = await page.locator('input[type="text"], input[type="search"], input').all();
-        console.log(`   🔍 ${allInputs.length} champs trouvés, recherche de celui avec "AB123CD"...`);
+        logStep(`${allInputs.length} champs trouvés → filtrage sur AB123CD`);
         
         for (const input of allInputs) {
           try {
@@ -453,7 +497,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
             
             if (normalizedValue === 'AB123CD' || value.includes('AB123CD') || value.includes('AB-123-CD')) {
               plateInput = input;
-              console.log(`   ✅ Champ trouvé avec la valeur "${value}"`);
+              logStep(`Champ trouvé via valeur "${value}"`);
               break;
             }
           } catch (e) {
@@ -470,15 +514,15 @@ async function runScrapeFlow(plate, serviceConfig = null) {
     }
 
     // Étape 4: Cliquer sur l'input et le focus
-    console.log('👆 Clic sur le champ...');
+    logStep('Clic sur le champ immatriculation');
     await plateInput.click();
     await page.waitForTimeout(260);
     await plateInput.focus();
     await page.waitForTimeout(180);
-    console.log('   ✅ Champ cliqué et focus');
+    logStep('Champ cliqué et focus');
     
     // Étape 5: Vider le champ avec Ctrl+A puis Delete (méthode plus humaine)
-    console.log('🗑️  Vidage du champ...');
+    logStep('Vidage du champ immatriculation');
     await page.keyboard.press('Control+a');
     await page.waitForTimeout(140);
     await page.keyboard.press('Delete');
@@ -492,10 +536,10 @@ async function runScrapeFlow(plate, serviceConfig = null) {
       await page.keyboard.press('Backspace');
       await page.waitForTimeout(140);
     }
-    console.log('   ✅ Champ vidé');
+    logStep('Champ vidé');
     
     // Étape 6: Taper la plaque avec le clavier (simulation plus humaine)
-    console.log(`⌨️  Saisie de la plaque "${plate}" avec le clavier...`);
+    logStep(`Saisie de la plaque "${plate}"`);
     await plateInput.focus();
     await page.waitForTimeout(140);
     
@@ -505,10 +549,10 @@ async function runScrapeFlow(plate, serviceConfig = null) {
       await page.waitForTimeout(50 + Math.random() * 50); // Petite pause aléatoire
     }
     await page.waitForTimeout(260);
-    console.log(`   ✅ Plaque "${plate}" saisie`);
+    logStep(`Plaque "${plate}" saisie`);
     
     // Étape 7: Déclencher tous les événements possibles (comme un vrai utilisateur)
-    console.log('📡 Déclenchement des événements...');
+    logStep('Déclenchement des événements sur le champ');
     await page.evaluate((input) => {
       // Focus
       input.focus();
@@ -532,20 +576,20 @@ async function runScrapeFlow(plate, serviceConfig = null) {
       input.dispatchEvent(blurEvent);
     }, await plateInput.elementHandle());
     await page.waitForTimeout(220);
-    console.log('   ✅ Événements déclenchés');
+    logStep('Événements déclenchés');
     
     // Vérifier la valeur finale
     const finalValue = await plateInput.inputValue() || '';
-    console.log(`   📋 Valeur finale dans le champ: "${finalValue}"`);
+    logStep(`Valeur finale dans le champ: "${finalValue}"`);
     
     if (finalValue !== plate && finalValue.replace(/[\s-]/g, '').toUpperCase() !== plate.replace(/[\s-]/g, '').toUpperCase()) {
       throw new Error(`La plaque ne correspond pas: attendu "${plate}", obtenu "${finalValue}"`);
     }
     
-    console.log('   ✅ La plaque correspond !');
+    logStep('La plaque correspond');
 
     // Étape 8: Cliquer sur "Continuer" (logique qui fonctionnait)
-    console.log('➡️  Recherche du bouton "Continuer"...');
+    logStep('Recherche du bouton Continuer');
     await page.waitForTimeout(220);
     
     let continueClicked = false;
@@ -560,11 +604,12 @@ async function runScrapeFlow(plate, serviceConfig = null) {
         await page.waitForTimeout(140);
         
         const buttonText = await continueButton.textContent();
-        console.log(`   🔍 Bouton trouvé: "${buttonText?.trim()}"`);
+        logStep(`Bouton détecté: "${buttonText?.trim()}"`);
         
         const newPagePromise = context.waitForEvent('page', { timeout: 6000 }).catch(() => null);
         await continueButton.click();
-        console.log('   ✅ Bouton "Continuer" cliqué');
+        logStep('Bouton "Continuer" cliqué');
+        await debugScreenshot(page, 'apres-continuer');
         await handlePostValidationNavigation(newPagePromise);
         continueClicked = true;
       } else {
@@ -792,7 +837,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
         }
       }
 
-      console.log(`   ✅ "${targetSelection}" sélectionné`);
+      logStep(`"${targetSelection}" sélectionné`);
       await page.waitForTimeout(520);
       await closeDetectionPopups(page);
       await ensureActivePage();
@@ -806,7 +851,8 @@ async function runScrapeFlow(plate, serviceConfig = null) {
     }
 
     // Étape 7: Cliquer sur "Je calcule mon devis"
-    console.log('💰 Recherche du bouton "Je calcule mon devis"...');
+    logStep('Recherche du bouton "Je calcule mon devis"');
+    await debugScreenshot(page, 'avant-calcul');
     await page
       .waitForSelector('button:has-text("Je calcule"), button:has-text("calculer mon devis"), a:has-text("calculer")', {
         timeout: 4000,
@@ -825,7 +871,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
         await calculateButton.scrollIntoViewIfNeeded();
         await page.waitForTimeout(140);
         await calculateButton.click();
-        console.log('   ✅ Bouton "Je calcule mon devis" cliqué');
+        logStep('Bouton "Je calcule mon devis" cliqué');
         await page
           .waitForLoadState('networkidle', { timeout: 5000 })
           .catch(async () => {
@@ -849,7 +895,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
                 await page.waitForTimeout(140);
                 try {
                   await btn.click({ timeout: 3000 });
-                  console.log(`   ✅ Bouton trouvé: "${text.trim()}"`);
+                  logStep(`Bouton calcul cliqué: "${text.trim()}"`);
                   await page
                     .waitForLoadState('networkidle', { timeout: 5000 })
                     .catch(async () => {
@@ -861,8 +907,8 @@ async function runScrapeFlow(plate, serviceConfig = null) {
                   break;
                 } catch (clickError) {
                   try {
-                    await page.evaluate((el) => el.click(), await btn.elementHandle());
-                    console.log(`   ✅ Bouton cliqué (JavaScript): "${text.trim()}"`);
+                  await page.evaluate((el) => el.click(), await btn.elementHandle());
+                  logStep(`Bouton calcul cliqué via JS: "${text.trim()}"`);
                     await page
                       .waitForLoadState('networkidle', { timeout: 5000 })
                       .catch(async () => {
@@ -888,7 +934,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
     }
 
     // Étape 8: Extraire le prix
-    console.log('💶 Extraction du prix...');
+    logStep('Extraction du prix');
     await page
       .waitForSelector('[class*="price"], [class*="montant"], text=/€/', { timeout: 5000 })
       .catch(async () => {
@@ -896,6 +942,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
       });
     await ensureActivePage();
     await page.waitForTimeout(900);
+    await debugScreenshot(page, 'avant-extraction-prix');
 
     let price = null;
     const priceSelectors = [
