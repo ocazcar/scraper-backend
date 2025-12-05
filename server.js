@@ -17,12 +17,20 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 // Configuration CORS pour autoriser les requêtes depuis le frontend
+const extraCors =
+  process.env.CORS_ALLOWED_ORIGINS
+    ?.split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean) || [];
+
 const allowedOrigins = [
   process.env.FRONTEND_URL,
   'http://localhost:8080',
   'http://localhost:5173',
-  // Ajoutez votre domaine Vercel ici en production
-  // 'https://votre-domaine.com',
+  'https://ocazcar.fr',
+  'https://www.ocazcar.fr',
+  'https://systeme.ocazcar.fr',
+  ...extraCors,
 ].filter(Boolean); // Retire les valeurs undefined
 
 app.use(cors({
