@@ -12,6 +12,8 @@ const REMOTE_DEBUG_PORT = Number(process.env.REMOTE_DEBUG_PORT || 9222);
 const DEBUG_SCREENSHOT_DIR = path.join(__dirname, 'debug-screenshots');
 const FORCE_BROWSER = (process.env.FORCE_BROWSER || '').toLowerCase();
 const ALLOW_CHROMIUM_FALLBACK = process.env.ALLOW_CHROMIUM_FALLBACK === 'true';
+const SCRAPER_LOCALE = process.env.SCRAPER_LOCALE || 'fr-FR';
+const SCRAPER_TIMEZONE = process.env.SCRAPER_TIMEZONE || 'Europe/Paris';
 
 const ensureDebugDir = () => {
   if (!DEBUG_VISUAL) return;
@@ -381,7 +383,28 @@ async function runScrapeFlow(plate, serviceConfig = null) {
 
     context = await browser.newContext({
       userAgent:
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 12_5_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15',
+      locale: SCRAPER_LOCALE,
+      timezoneId: SCRAPER_TIMEZONE,
+      viewport: { width: 1280, height: 720 },
+    });
+    await context.setExtraHTTPHeaders({
+      'Accept-Language': 'fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7',
+      'Upgrade-Insecure-Requests': '1',
+    });
+    await context.addInitScript(() => {
+      Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+      window.chrome = window.chrome || { runtime: {} };
+      Object.defineProperty(navigator, 'languages', { get: () => ['fr-FR', 'fr', 'en'] });
+      Object.defineProperty(navigator, 'plugins', {
+        get: () => [1, 2, 3],
+      });
+      const originalQuery = window.navigator.permissions.query;
+      window.navigator.permissions.query = (parameters) =>
+        parameters?.name === 'notifications'
+          ? Promise.resolve({ state: Notification.permission })
+          : originalQuery(parameters);
+      window.__playwrightStealth = true;
     });
     let page = await context.newPage();
 
