@@ -159,7 +159,7 @@ const buildChromiumLaunchOptions = (headless) => ({
 
 const buildWebkitLaunchOptions = (headless) => ({
   headless,
-  args: headless ? ['--disable-blink-features=AutomationControlled'] : [],
+  args: [],
 });
 
 const resolveBrowserPreference = () => {
