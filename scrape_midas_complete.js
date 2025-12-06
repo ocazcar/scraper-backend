@@ -416,13 +416,22 @@ async function runScrapeFlow(plate, serviceConfig = null) {
     const waitForPostContinueStability = async () => {
       const activePage = await ensureActivePage();
       await activePage
-        .waitForLoadState('networkidle', { timeout: 8000 })
+        .waitForLoadState('networkidle', { timeout: 10000 })
         .catch(async () => {
           await activePage.waitForLoadState('domcontentloaded').catch(() => {});
-          await activePage.waitForTimeout(1500).catch(() => {});
+          await activePage.waitForTimeout(2500).catch(() => {});
+        });
+      await activePage.waitForTimeout(2500).catch(() => {});
+      await closeDetectionPopups(activePage);
+      await activePage
+        .waitForSelector(
+          'midas-service-selector, midas-service-selector-v2, midas-service-card, [data-testid="service-card"], [class*="service-card"], [class*="midas-card"], text=/Révision garantie constructeur|Forfaits vidange|Freins/i',
+          { timeout: 8000 }
+        )
+        .catch(async () => {
+          await activePage.waitForTimeout(2000).catch(() => {});
         });
       await activePage.waitForTimeout(1500).catch(() => {});
-      await closeDetectionPopups(activePage);
       await debugScreenshot(activePage, 'apres-continuer-stabilise');
     };
 
@@ -742,19 +751,22 @@ async function runScrapeFlow(plate, serviceConfig = null) {
     if (serviceConfig.hasSelection) {
       await ensureActivePage();
       console.log('🔧 Sélection du service...');
+      await page.waitForTimeout(1000).catch(() => {});
       await page
         .waitForLoadState('networkidle', { timeout: 4000 })
         .catch(async () => {
           await page.waitForLoadState('domcontentloaded').catch(() => {});
+          await page.waitForTimeout(800).catch(() => {});
         });
       await page
         .waitForSelector(
-          'label:has-text("Plaquette"), label:has-text("Disque"), label:has-text("Amortisseur"), label:has-text("Balai"), label:has-text("start"), button:has-text("Les deux")',
-          { timeout: 4000 }
+          'label:has-text("Plaquette"), label:has-text("Disque"), label:has-text("Amortisseur"), label:has-text("Balai"), label:has-text("start"), button:has-text("Les deux"), text=/Freinage/i',
+          { timeout: 8000 }
         )
         .catch(async () => {
-          await page.waitForTimeout(260);
+          await page.waitForTimeout(1200);
         });
+      await page.waitForTimeout(800).catch(() => {});
 
       const combinedLocator = page.locator(
         'label, button, a, [role="button"], [class*="button"], [class*="selectable"], [class*="option"], [class*="card"], [class*="choice"], div.panel, div.card, div.panel-body, div.panel-heading'
