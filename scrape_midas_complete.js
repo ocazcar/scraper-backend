@@ -413,6 +413,19 @@ async function runScrapeFlow(plate, serviceConfig = null) {
       return page;
     };
 
+    const waitForPostContinueStability = async () => {
+      const activePage = await ensureActivePage();
+      await activePage
+        .waitForLoadState('networkidle', { timeout: 8000 })
+        .catch(async () => {
+          await activePage.waitForLoadState('domcontentloaded').catch(() => {});
+          await activePage.waitForTimeout(1500).catch(() => {});
+        });
+      await activePage.waitForTimeout(1500).catch(() => {});
+      await closeDetectionPopups(activePage);
+      await debugScreenshot(activePage, 'apres-continuer-stabilise');
+    };
+
     const handlePostValidationNavigation = async (pendingNewPagePromise = null) => {
       let newPage = null;
       if (pendingNewPagePromise) {
@@ -657,6 +670,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
         logStep('Bouton "Continuer" cliqué');
         await debugScreenshot(page, 'apres-continuer');
         await handlePostValidationNavigation(newPagePromise);
+        await waitForPostContinueStability();
         continueClicked = true;
       } else {
         console.log('   ⚠️  Bouton "Continuer" non visible');
@@ -684,6 +698,7 @@ async function runScrapeFlow(plate, serviceConfig = null) {
               await button.click();
               console.log(`   ✅ Bouton "Continuer" cliqué (texte: "${text.trim()}")`);
               await handlePostValidationNavigation(newPagePromise);
+              await waitForPostContinueStability();
               continueClicked = true;
               break;
           }
@@ -704,6 +719,9 @@ async function runScrapeFlow(plate, serviceConfig = null) {
         const newPagePromise = context.waitForEvent('page', { timeout: 6000 }).catch(() => null);
         await page.keyboard.press('Enter');
         const switched = await handlePostValidationNavigation(newPagePromise);
+        if (switched) {
+          await waitForPostContinueStability();
+        }
 
         if (switched || (await page.locator('text=/Votre véhicule/i').first().count().catch(() => 0))) {
           continueClicked = true;
